@@ -56,6 +56,14 @@ class DecoratorManager
     protected $dataProvider;
 
     /**
+     * @param $dataProvider DataProvider
+     */
+    public function __construct(DataProvider $dataProvider)
+    {
+        $this->dataProvider = $dataProvider;
+    }
+    
+    /**
      * @param $logger LoggerInterface
      */
     public function setLogger(LoggerInterface $logger)
@@ -71,13 +79,7 @@ class DecoratorManager
         $this->cacheItemPool = $cacheItemPool;
     }
     
-     /**
-     * @param $dataProvider DataProvider
-     */
-    public function setDataProvider(DataProvider $dataProvider)
-    {
-        $this->dataProvider = $dataProvider;
-    }
+
     
     /**
      * {@inheritdoc}
@@ -120,10 +122,9 @@ $logger = new Logger();
 $dataProvider = new DataProvider($host, $user, $password);
 
 
-$DecoratorManager = new DecoratorManager();
+$DecoratorManager = new DecoratorManager($dataProvider);
 $DecoratorManager->setCacheItemPool($cacheItemPool);
 $DecoratorManager->setLogger($logger);
-$DecoratorManager->dataProvider($dataProvider);
 
 $DecoratorManager->getResponse();
 
