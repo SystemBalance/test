@@ -55,17 +55,25 @@ class DecoratorManager
      */
     protected $dataProvider;
 
-    
+    /**
+     * @param $logger LoggerInterface
+     */
     public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
     }
     
+    /**
+     * @param $cacheItemPool CacheItemPoolInterface
+     */
     public function setCacheItemPool(CacheItemPoolInterface $cacheItemPool)
     {
         $this->cacheItemPool = $cacheItemPool;
     }
     
+     /**
+     * @param $dataProvider DataProvider
+     */
     public function setDataProvider(DataProvider $dataProvider)
     {
         $this->dataProvider = $dataProvider;
