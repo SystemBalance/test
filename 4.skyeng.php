@@ -1,15 +1,20 @@
+
 <?php
 $a = "12344";
 $b = "453453454456353456";
 
-function mySum($a,$b){
+function mySum($a,$b): string
+{
     if(strlen($a) > strlen($b)){
-        $aArr = str_split(strrev($a));
-        $bArr = str_split(strrev($b));
+        $max = $a;
+        $min = $b;
     } else {
-        $aArr = str_split(strrev($b));
-        $bArr = str_split(strrev($a));
+        $max = $b;
+        $min = $a;
     }
+    
+    $aArr = str_split(strrev($max));
+    $bArr = strrev($min);
     
     $result = [];
     $dec = 0;
@@ -26,7 +31,7 @@ function mySum($a,$b){
             $dec=0;
         }
     
-        if(strlen($sum) == 2){
+        if($sum > 9 ){
             $dec = 1;
             $sum=$sum-10;
         }
@@ -56,9 +61,9 @@ function mySum2($a,$b){
     
     for($k=0;$k<$aLen;$k++){
         if($k<$bLen){
-            $sum = $aArr{$k} + $bArr{$k};
+            $sum = $aArr[$k] + $bArr[$k];
         } else {
-            $sum = $aArr{$k};
+            $sum = $aArr[$k];
         }
         
         if($dec == 1){
@@ -66,7 +71,7 @@ function mySum2($a,$b){
             $dec=0;
         }
     
-        if(strlen($sum) == 2){
+        if($sum > 9 ){
             $dec = 1;
             $sum=$sum-10;
         }
@@ -83,10 +88,12 @@ echo '<br />';
 echo mySum($a,$b);
 echo '<br />';
 (float)$time1 = microtime(1);
-echo 'mySum:'.(float)($time1 - $time);
+echo 'mySum:'.round($time1 - $time, 7);
 echo '<br />';
 echo mySum2($a,$b);
 echo '<br />';
 (float)$time2 = microtime(1);
-echo 'mySum2:'.(float)($time2 - $time1);
+echo 'mySum2:'.round($time2 - $time1, 7);
+
+
 ?>
