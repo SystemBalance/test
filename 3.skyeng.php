@@ -100,7 +100,7 @@ class DecoratorManager
         return [];
     }
     
-    public function getCacheKey(array $input)
+    protected function getCacheKey(array $input)
     {
         return json_encode($input);
     }
